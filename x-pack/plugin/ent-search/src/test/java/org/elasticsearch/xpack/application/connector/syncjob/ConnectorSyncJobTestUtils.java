@@ -35,7 +35,7 @@ public class ConnectorSyncJobTestUtils {
             .setConnector(ConnectorTestUtils.getRandomSyncJobConnectorInfo())
             .setCreatedAt(randomInstantBetween(lowerBoundInstant, upperBoundInstant))
             .setDeletedDocumentCount(randomLong())
-            .setError(randomFrom(new String[] { null, randomAlphaOfLength(10) }))
+            .setError(randomFrom(new String[] { null, randomAlphaOfLength(11) }))
             .setId(randomAlphaOfLength(10))
             .setIndexedDocumentCount(randomLong())
             .setIndexedDocumentVolume(randomLong())
