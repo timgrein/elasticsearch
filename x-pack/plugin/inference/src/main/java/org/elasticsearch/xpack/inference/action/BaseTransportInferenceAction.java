@@ -27,6 +27,7 @@ import org.elasticsearch.inference.InferenceServiceResults;
 import org.elasticsearch.inference.Model;
 import org.elasticsearch.inference.TaskType;
 import org.elasticsearch.inference.UnparsedModel;
+import org.elasticsearch.injection.guice.Inject;
 import org.elasticsearch.license.LicenseUtils;
 import org.elasticsearch.license.XPackLicenseState;
 import org.elasticsearch.rest.RestStatus;
@@ -85,6 +86,7 @@ public abstract class BaseTransportInferenceAction<Request extends BaseInference
     private final TransportService transportService;
     private final Random random;
 
+    @Inject
     public BaseTransportInferenceAction(
         String inferenceActionName,
         TransportService transportService,
