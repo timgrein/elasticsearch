@@ -771,3 +771,5 @@ tests:
 - class: org.elasticsearch.xpack.esql.analysis.promql.PromqlVerifierTests
   method: testVectorMatchingRequiresInstantVectors
   issue: https://github.com/elastic/elasticsearch/issues/158606
+- class: org.elasticsearch.xpack.sql.qa.security.CliSecurityIT
+  issue: https://github.com/elastic/elasticsearch/issues/158631
