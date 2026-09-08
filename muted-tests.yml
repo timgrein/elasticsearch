@@ -773,3 +773,6 @@ tests:
 - class: org.elasticsearch.xpack.ilm.CCRIndexLifecycleIT
   method: testCcrAndIlmWithRollover {targetCluster=FOLLOWER}
   issue: https://github.com/elastic/elasticsearch/issues/158760
+- class: org.elasticsearch.xpack.ilm.CCRIndexLifecycleIT
+  method: testCCRUnfollowDuringSnapshot {targetCluster=FOLLOWER}
+  issue: https://github.com/elastic/elasticsearch/issues/158761
