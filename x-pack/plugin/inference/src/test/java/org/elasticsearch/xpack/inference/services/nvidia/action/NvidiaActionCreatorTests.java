@@ -27,7 +27,7 @@ import org.elasticsearch.xpack.core.inference.results.RankedDocsResultsTests;
 import org.elasticsearch.xpack.inference.common.TruncatorTests;
 import org.elasticsearch.xpack.inference.common.model.Truncation;
 import org.elasticsearch.xpack.inference.external.http.HttpClientManager;
-import org.elasticsearch.xpack.inference.external.http.sender.ChatCompletionInput;
+import org.elasticsearch.xpack.inference.external.http.sender.CompletionInput;
 import org.elasticsearch.xpack.inference.external.http.sender.EmbeddingsInput;
 import org.elasticsearch.xpack.inference.external.http.sender.HttpRequestSenderTests;
 import org.elasticsearch.xpack.inference.external.http.sender.QueryAndDocsInputs;
@@ -43,7 +43,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import static org.elasticsearch.xpack.core.inference.results.ChatCompletionResultsTests.buildExpectationCompletion;
+import static org.elasticsearch.xpack.core.inference.results.CompletionResultsTests.buildExpectationCompletion;
 import static org.elasticsearch.xpack.core.inference.results.DenseEmbeddingFloatResultsTests.buildExpectationFloat;
 import static org.elasticsearch.xpack.core.inference.results.RankedDocsResultsTests.buildExpectationRerank;
 import static org.elasticsearch.xpack.inference.Utils.inferenceUtilityExecutors;
@@ -469,7 +469,7 @@ public class NvidiaActionCreatorTests extends ESTestCase {
             var action = new NvidiaActionCreator(sender, createWithEmptySettings(threadPool)).create(model);
 
             PlainActionFuture<InferenceServiceResults> listener = new PlainActionFuture<>();
-            action.execute(new ChatCompletionInput(INPUT_VALUE), null, listener);
+            action.execute(new CompletionInput(INPUT_VALUE), null, listener);
 
             var result = listener.actionGet(ESTestCase.TEST_REQUEST_TIMEOUT);
 
@@ -500,7 +500,7 @@ public class NvidiaActionCreatorTests extends ESTestCase {
             var action = new NvidiaActionCreator(sender, createWithEmptySettings(threadPool)).create(model);
 
             PlainActionFuture<InferenceServiceResults> listener = new PlainActionFuture<>();
-            action.execute(new ChatCompletionInput(INPUT_VALUE), null, listener);
+            action.execute(new CompletionInput(INPUT_VALUE), null, listener);
             var thrownException = expectThrows(
                 ElasticsearchStatusException.class,
                 () -> listener.actionGet(ESTestCase.TEST_REQUEST_TIMEOUT)
@@ -527,7 +527,7 @@ public class NvidiaActionCreatorTests extends ESTestCase {
             var action = new NvidiaActionCreator(sender, createWithEmptySettings(threadPool)).create(model);
 
             PlainActionFuture<InferenceServiceResults> listener = new PlainActionFuture<>();
-            action.execute(new ChatCompletionInput(INPUT_VALUE), null, listener);
+            action.execute(new CompletionInput(INPUT_VALUE), null, listener);
             var thrownException = expectThrows(
                 ElasticsearchStatusException.class,
                 () -> listener.actionGet(ESTestCase.TEST_REQUEST_TIMEOUT)
@@ -573,7 +573,7 @@ public class NvidiaActionCreatorTests extends ESTestCase {
             var action = new NvidiaActionCreator(sender, createWithEmptySettings(threadPool)).create(model);
 
             PlainActionFuture<InferenceServiceResults> listener = new PlainActionFuture<>();
-            action.execute(new ChatCompletionInput(INPUT_VALUE), null, listener);
+            action.execute(new CompletionInput(INPUT_VALUE), null, listener);
 
             var thrownException = expectThrows(
                 ElasticsearchStatusException.class,
