@@ -776,3 +776,6 @@ tests:
 - class: org.elasticsearch.xpack.ilm.CCRIndexLifecycleIT
   method: testCCRUnfollowDuringSnapshot {targetCluster=FOLLOWER}
   issue: https://github.com/elastic/elasticsearch/issues/158761
+- class: org.elasticsearch.xpack.ilm.CCRIndexLifecycleIT
+  method: testTsdbLeaderIndexRolloverAndSyncAfterWaitUntilEndTime {targetCluster=FOLLOWER}
+  issue: https://github.com/elastic/elasticsearch/issues/158762
