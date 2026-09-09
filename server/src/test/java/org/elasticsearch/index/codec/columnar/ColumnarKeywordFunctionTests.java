@@ -206,7 +206,7 @@ public class ColumnarKeywordFunctionTests extends ESTestCase {
     /** Every doc-values field through the columnar format, which is what makes the field a column. */
     private static Codec columnarCodec() {
         final Codec base = TestUtil.getDefaultCodec();
-        final DocValuesFormat columnar = new ColumNARDocValuesFormat();
+        final DocValuesFormat columnar = new ColumNARDocValuesFormat(field -> ColumnarFieldType.STRING);
         return new FilterCodec(base.getName(), base) {
             private final DocValuesFormat perField = new PerFieldDocValuesFormat() {
                 @Override
@@ -225,7 +225,6 @@ public class ColumnarKeywordFunctionTests extends ESTestCase {
     private static FieldType columnarBinaryFieldType() {
         final FieldType type = new FieldType();
         type.setDocValuesType(DocValuesType.BINARY);
-        type.putAttribute(ColumNARDocValuesFormat.TYPE_ATTRIBUTE, ColumnarFieldType.STRING.name());
         type.freeze();
         return type;
     }
